@@ -7,4 +7,18 @@ prints the last n lines. The program should behave rationally no matter how unre
 
 Compile Steps: 
 
-Output:
+bchun@DESKTOP-48N88BC gcc tail.c Output: bchun@DESKTOP-48N88BC ~/hw6-ericbrian/question2
+$ ./a.exe -n < Thesis.txt
+number: 10
+heading for the far-off future.
+
+The cruel angel's thesis
+will soon take flight through the window,
+
+with surging, hot pathos,
+if you betray your memories.
+
+Embracing this sky [universe] and shining,
+young boy, become the legend
+
+
