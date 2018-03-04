@@ -36,6 +36,11 @@ int getdata(float c[MAXLENGTH][MAXLENGTH], struct data d[], int debug)
 			if(j == 1)
 			{
 				placeholder_num = atoi(placeholder);
+				if(placeholder_num > 31)
+				{
+					printf("Day too large");
+					return -1;
+				}
 				//printf("\nPlaceholder:%.2f", placeholder_num);
 				d[i].dates.day = placeholder_num;
 				if(debug)
@@ -47,6 +52,11 @@ int getdata(float c[MAXLENGTH][MAXLENGTH], struct data d[], int debug)
 			else if(j == 0)
 			{
 				placeholder_num = atoi(placeholder);
+				if(placeholder_num > 12 || placeholder_num < 1)
+				{
+					printf("\nMonth not between 1 and 12");
+					return -1;
+				}
 				d[i].dates.month = placeholder_num;
 				if(debug)
 				{
@@ -73,6 +83,11 @@ int getdata(float c[MAXLENGTH][MAXLENGTH], struct data d[], int debug)
 					printf("\nDEBUG:Bitcoin Price:%.2f$\n", d[i].Bitcoin);
 					printf("\nBitcoin Price:%.2f$", d[i].Bitcoin);
 				}
+			}
+			else if(j == 4)
+			{
+				printf("\n\nERROR TOO MUCH DATA PER DAY, DATA PER DAY SHOULD BE MONTH DAY YEAR PRICE\n\n");
+				return -1;
 			}
 			if(debug)
 			{	
@@ -206,6 +221,8 @@ int main(int argc, char *argv[])
 	float data_array_debug[MAXLENGTH][MAXLENGTH];
 	//used for debugging
 	num_data = getdata(data_array_debug, coinprice, argc);
+	if(num_data == -1)
+		return -1;
 	printf("\n\nThe average price over this time period was %f$",avg(coinprice, num_data, argc));
 		i = highest(coinprice, num_data);
 	printf("\nThe highest price of bitcoin was %f$ at %d/%d/%d", coinprice[i].Bitcoin,
